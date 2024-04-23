@@ -10,7 +10,6 @@ import os
 import concurrent.futures
 from GoogleImageScraper import GoogleImageScraper
 
-# from gemini_ask import ImageDescriptionGenerator
 from gemini_ask import ImageDescriptionGenerator
 from patch import webdriver_executable
 
@@ -58,15 +57,16 @@ if __name__ == "__main__":
 
     # Add new search key into array ["cat","t-shirt","apple","orange","pear","fish"]
     search_keys = list(set(["tattoos"]))
+    print("checkp1")
 
     image_path = os.path.normpath(os.path.join(os.getcwd(), "photos"))
 
     # Parameters
-    number_of_images = 1  # Desired number of images
+    number_of_images = 10  # Desired number of images
     headless = True  # True = No Chrome GUI
     min_resolution = (0, 0)  # Minimum desired image resolution
     max_resolution = (9999, 9999)  # Maximum desired image resolution
-    max_missed = 10  # Max number of failed images before exit
+    max_missed = 100  # Max number of failed images before exit
     number_of_workers = 1  # Number of "workers" used
     keep_filenames = False  # Keep original URL image filenames
 

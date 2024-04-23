@@ -4,6 +4,7 @@ import textwrap
 from PIL import Image
 import google.generativeai as genai
 from IPython.display import Markdown
+import subprocess
 
 
 # Configure API key
@@ -69,8 +70,8 @@ for filename in image_files:
         # img.show()
         response = model.generate_content(
             [
-                "Choose the following answers that match to the image."
-                "The color is (A): colorful, (B): black and white."
+                "Choose the following answers that match to the image.",
+                "The color is (A): colorful, (B): black and white.",
                 "The style is (C): stripes, (D): filled up, (E): mixed",
                 "For example, if the picture is colorful and filled up then answer would be: A B",
                 img,
@@ -81,3 +82,18 @@ for filename in image_files:
         # Print the generated description
         print(response.text)
         # print(to_markdown(response.text))
+
+        # Pass the response to file_classify.py
+        with open(
+            "/Users/wangyichao/webscraping/ImageScraper_and_Classification/file_classify.py",
+            "w",
+        ) as f:
+            f.write(response.text)
+
+        # Execute file_classify.py
+        subprocess.run(
+            [
+                "python",
+                "/Users/wangyichao/webscraping/ImageScraper_and_Classification/file_classify.py",
+            ]
+        )
