@@ -56,7 +56,7 @@ if __name__ == "__main__":
     print("[INFO] Constructing WebDriver path:", webdriver_path)
 
     # Add new search key into array ["cat","t-shirt","apple","orange","pear","fish"]
-    search_keys = list(set(["tattoos"]))
+    search_keys = list(set(["tattoos", "cat"]))
     print("checkp1")
 
     image_path = os.path.normpath(os.path.join(os.getcwd(), "photos"))
